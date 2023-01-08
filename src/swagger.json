@@ -1,0 +1,87 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2.0",
+    "title": "SOLID"
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Create user",
+        "description": "Create a new user",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "body",
+            "required": true
+          },
+          {
+            "name": "email",
+            "in": "body",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": "Created",
+          "400": "Email already used"
+        }
+      },
+      "get": {
+        "tags": ["User"],
+        "summary": "Get users",
+        "description": "Get all users",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": "Success",
+          "400": {
+            "name": "Unauthorized",
+            "description": "The test require code 400, not 401..."
+          }
+        }
+      }
+    },
+    "/users/:user_id/admin": {
+      "patch": {
+        "tags": ["User"],
+        "summary": "Turn as admin",
+        "description": "Turn user as admin",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": "Success",
+          "404": "Not found"
+        }
+      }
+    },
+    "/users/user_id": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Get a user",
+        "description": "Get a specific user",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": "Success",
+          "404": "Not found"
+        }
+      }
+    }
+  }
+}

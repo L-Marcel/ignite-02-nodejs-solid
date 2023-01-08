@@ -6,7 +6,7 @@ class User {
   updated_at: Date;
   admin: boolean;
 
-  constructor(public name: string, public email: string) {
+  constructor(public name: string = "", public email: string = "") {
     this.id = uuidV4();
     this.created_at = new Date();
     this.updated_at = new Date();
